@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Photoreal AI Studio - image creation powered by Perchance.">
+  <title>Photoreal AI Studio</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: #0b1020; color: #f8fafc; font-family: system-ui, -apple-system, Arial, sans-serif; }
+    .shell { width: min(100%, 1100px); margin: 0 auto; padding: 20px 12px 30px; }
+    header { text-align: center; padding: 10px 8px 20px; }
+    .eyebrow { color: #93b9ff; font-size: 12px; font-weight: 750; letter-spacing: 2px; }
+    h1 { margin: 10px 0 8px; font-size: clamp(26px, 6vw, 38px); }
+    .sub { margin: 0; color: #bac6dc; line-height: 1.6; font-size: 14px; }
+    .toolbar { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 18px 0 0; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 16px; border-radius: 12px; background: #477bff; color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; border: 1px solid #477bff; }
+    .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .frame-card { overflow: hidden; border-radius: 18px; border: 1px solid #35415c; background: #151d31; }
+    .frame-heading { padding: 13px 16px; border-bottom: 1px solid #35415c; color: #d8e4fb; font-size: 13px; font-weight: 650; }
+    iframe { display: block; width: 100%; height: max(680px, 85dvh); border: 0; background: #fff; }
+    .note { color: #aebbd2; text-align: center; font-size: 12px; line-height: 1.6; padding: 14px 8px; }
+    .note a { color: #a9c8ff; }
+    @media (min-width: 768px) { .shell { padding: 30px 24px 40px; } iframe { height: max(760px, 88dvh); } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="eyebrow">AI IMAGE CREATION</div>
+      <h1>Photoreal AI Studio</h1>
+      <p class="sub">Create photorealistic images using your existing generator.</p>
+      <div class="toolbar">
+        <a class="btn" href="https://perchance.org/lbmi96ly1g" target="_blank" rel="noopener noreferrer">Open Generator Directly ↗</a>
+      </div>
+    </header>
+    <section class="frame-card" aria-label="Embedded image generator">
+      <div class="frame-heading">Image Generator · Embedded Preview</div>
+      <iframe
+        title="Photoreal Portrait Generator"
+        src="https://perchance.org/lbmi96ly1g"
+        loading="eager"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="clipboard-write"
+      >
+        Your browser does not support embedded pages.
+      </iframe>
+    </section>
+    <p class="note">If the generator is blank or blocked, use <a href="https://perchance.org/lbmi96ly1g" target="_blank" rel="noopener noreferrer">Open Generator Directly</a>. Image generation is provided by Perchance, not GitHub Pages.</p>
+  </main>
+</body>
+</html>
