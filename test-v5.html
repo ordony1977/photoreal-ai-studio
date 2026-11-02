@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photoreal AI Studio — واجهتي</title>
+<style>
+:root{color-scheme:dark;--bg:#090e19;--panel:#121b2b;--line:#2a3851;--txt:#f4f7ff;--muted:#9fb0c8;--accent:#5b8cff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#192a4b 0%,var(--bg) 45%);font:15px system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--txt)}main{max-width:1020px;margin:auto;padding:22px 16px 55px}header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:24px}.brand{font-weight:800;font-size:20px;letter-spacing:.2px}.brand b{color:#7ba6ff}.pill{border:1px solid var(--line);border-radius:30px;padding:8px 12px;color:var(--muted);font-size:12px}.hero{margin:15px 0 23px}h1{font-size:clamp(27px,5vw,43px);margin:0 0 7px}p{color:var(--muted);line-height:1.7;margin:0}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}.card{background:rgba(18,27,43,.94);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 12px 35px #0003}h2{font-size:18px;margin:0 0 16px}label{display:block;font-size:13px;font-weight:650;margin:14px 0 7px}textarea,input,select{background:#0b1321;color:var(--txt);border:1px solid #34445e;border-radius:11px;padding:12px;font:inherit;width:100%;outline:none}textarea:focus,input:focus,select:focus{border-color:var(--accent)}textarea{min-height:135px;resize:vertical}#negative{min-height:70px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}button,.link{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:12px;padding:13px 15px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}.primary{background:var(--accent);color:white;width:100%;margin-top:18px}.secondary{background:#23314a;color:white}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.preview{border:1px dashed #43516a;border-radius:15px;min-height:280px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:12px;padding:24px;background:#0b1424}.preview .art{font-size:48px}.preview p{max-width:280px}.note{font-size:12px;color:#a9bad0;margin-top:14px;line-height:1.8}.status{padding:10px 12px;border:1px solid #44546c;border-radius:10px;background:#142239;font-size:13px;margin-top:14px}.small{font-size:12px;color:var(--muted)}@media(max-width:760px){.layout{grid-template-columns:1fr}.card{padding:16px}header{align-items:flex-start}.brand{font-size:17px}}
+</style>
+</head>
+<body><main>
+<header><div class="brand">✦ Photoreal <b>AI Studio</b></div><span class="pill">واجهة شخصية • إصدار تجريبي</span></header>
+<section class="hero"><h1>حوّل فكرتك إلى صورة</h1><p>واجهة خاصة فيك، مصممة للموبايل، مع تحكم كامل بالبرومبت والإعدادات.</p></section>
+<div class="layout"><section class="card"><h2>إعدادات الصورة</h2>
+<label for="prompt">وصف الصورة</label><textarea id="prompt" placeholder="مثال: Portrait photo of a person at golden hour, realistic skin texture, 85mm lens..."></textarea>
+<label for="negative">الأشياء غير المرغوبة (Negative Prompt)</label><textarea id="negative" placeholder="blurry, distorted hands, watermark, cartoon"></textarea>
+<div class="two"><div><label for="ratio">الأبعاد</label><select id="ratio"><option value="portrait">عمودي 4:5</option><option value="square">مربع 1:1</option><option value="landscape">أفقي 16:9</option></select></div><div><label for="style">الأسلوب</label><select id="style"><option value="photorealistic, natural light, realistic textures">واقعي جدًا</option><option value="cinematic photography, dramatic lighting">سينمائي</option><option value="professional studio photography, softbox lighting">استوديو</option><option value="documentary photography, candid natural moment">عفوي طبيعي</option></select></div></div>
+<div class="two"><div><label for="seed">Seed</label><input id="seed" type="number" value="-1"></div><div><label for="quality">التفاصيل</label><select id="quality"><option value="high detail, sharp focus">عالية</option><option value="ultra detailed, intricate textures, sharp focus">فائقة</option></select></div></div>
+<button class="primary" id="generate">✦ توليد الصورة الآن</button><div class="actions"><button class="secondary" id="copy">نسخ البرومبت</button><button class="secondary" id="save">حفظ الإعدادات</button></div>
+<div id="status" class="status" role="status">جاهز لتجربة التوليد عبر Perchance.</div></section>
+<section class="card"><h2>معاينة ومخرجات</h2><div class="preview" id="gallery"><div class="art">▧</div><strong>معرض الصور</strong><p>ستظهر الصورة المولدة هنا.</p></div><label for="final">البرومبت النهائي</label><textarea id="final" readonly placeholder="سيظهر هنا البرومبت النهائي بعد الضغط على زر التجهيز"></textarea><div class="actions"><a class="link secondary" href="https://perchance.org/lbmi96ly1g" target="_blank" rel="noopener">فتح مولّد Perchance الأصلي ↗</a></div><p class="note">نسخة اختبارية تربط واجهتك بمحرك Perchance. قد يتطلب التوليد ظهور واجهة المحرك أو التحقق من الوصول.</p></section></div>
+</main><iframe id="engine" title="محرك Perchance" src="https://null.perchance.org/zx088gx1yy" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;border:0" aria-hidden="true"></iframe><script>
+const $=id=>document.getElementById(id);const fields=['prompt','negative','ratio','style','seed','quality'];try{const saved=JSON.parse(localStorage.getItem('photoreal-ui-settings')||'{}');for(const id of fields)if(saved[id]!==undefined)$(id).value=saved[id]}catch{}
+function build(){const prompt=$('prompt').value.trim();if(!prompt){$('status').textContent='اكتب وصف الصورة أولًا.';$('prompt').focus();return null}const out=[prompt,$('style').value,$('quality').value].join(', ');$('final').value=out;$('status').textContent='تم تجهيز البرومبت. التوليد داخل الموقع غير متصل بمحرك بعد.';return out}
+const engine=$('engine');let busy=false,activeId=null,timeout=null;
+const allowedOrigin=o=>{try{const u=new URL(o);return u.protocol==='https:'&&(u.hostname==='perchance.org'||u.hostname.endsWith('.perchance.org'))}catch{return false}};
+window.addEventListener('message',event=>{
+  const d=event.data;
+  if(event.source!==engine.contentWindow||!allowedOrigin(event.origin)||!d||d.type!=='GENERATE_IMAGE_RESULT'||d.requestId!==activeId)return;
+  clearTimeout(timeout);busy=false;activeId=null;$('generate').disabled=false;$('generate').textContent='✦ توليد الصورة الآن';
+  if(d.ok&&typeof d.dataUrl==='string'&&d.dataUrl.startsWith('data:image/')){
+    const img=document.createElement('img');img.src=d.dataUrl;img.alt='الصورة المولدة';img.style.cssText='max-width:100%;height:auto;border-radius:12px;display:block';
+    const download=document.createElement('a');download.href=d.dataUrl;download.download='photoreal-'+Date.now()+'.jpg';download.textContent='حفظ الصورة';download.className='link secondary';
+    $('gallery').replaceChildren(img,download);$('status').textContent='تم توليد الصورة بنجاح.';
+  }else $('status').textContent='تعذّر التوليد: '+String(d.error||'لم تصل صورة صالحة');
+});
+$('generate').onclick=()=>{
+ if(busy)return;
+ const prompt=build();if(!prompt)return;
+ const seed=Number($('seed').value);
+ const requestId='img-'+Date.now()+'-'+Math.random().toString(36).slice(2);
+ const message={type:'GENERATE_IMAGE',requestId,prompt,negativePrompt:$('negative').value,resolution:({portrait:'512x768',square:'768x768',landscape:'768x512'})[$('ratio').value],guidanceScale:7};
+ if(Number.isInteger(seed)&&seed>=0)message.seed=seed;
+ activeId=requestId;busy=true;$('generate').disabled=true;$('generate').textContent='جارٍ توليد الصورة…';$('status').textContent='أُرسل الطلب إلى Perchance، انتظر النتيجة…';
+ try{engine.contentWindow.postMessage(message,'*')}catch(e){$('status').textContent='فشل إرسال الطلب: '+e.message;busy=false;activeId=null;$('generate').disabled=false;$('generate').textContent='✦ توليد الصورة الآن';return}
+ timeout=setTimeout(()=>{if(activeId===requestId){busy=false;activeId=null;$('generate').disabled=false;$('generate').textContent='✦ توليد الصورة الآن';$('status').textContent='انتهت مهلة الانتظار (دقيقتان). قد يكون محرك Perchance لم يكتمل تحميله أو يتطلب تحققًا.'}},120000);
+};
+$('copy').onclick=async()=>{const t=$('final').value||build();if(!t)return;try{await navigator.clipboard.writeText(t);$('status').textContent='تم نسخ البرومبت.'}catch{$('final').focus();$('final').select();$('status').textContent='حدّد النص وانسخه يدويًا.'}};$('save').onclick=()=>{const o={};for(const id of fields)o[id]=$(id).value;try{localStorage.setItem('photoreal-ui-settings',JSON.stringify(o));$('status').textContent='تم حفظ الإعدادات على هذا الجهاز.'}catch{$('status').textContent='المتصفح منع حفظ الإعدادات.'}};
+</script></body></html>
