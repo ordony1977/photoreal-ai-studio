@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>اختبار اتصال Perchance</title><style>body{font-family:system-ui;background:#101827;color:white;max-width:650px;margin:40px auto;padding:20px}button{font-size:18px;padding:14px 25px;background:#2678f2;color:white;border:0;border-radius:10px}#status{padding:20px;background:#263246;border-radius:12px;margin-top:20px;line-height:1.7}iframe{width:1px;height:1px;position:absolute;opacity:0;pointer-events:none;border:0}</style></head><body><h2>اختبار اتصال موقعك مع Perchance</h2><p>اضغط الزر وانتظر النتيجة. الاختبار لا يولّد صورًا ولا يعدّل أي ملفات.</p><button id="test">اختبار الاتصال PING</button><div id="status" role="status">جاهز للاختبار.</div><iframe id="generator" title="Perchance test" src="https://perchance.org/lbmi96ly1g"></iframe><script>
+const frame=document.getElementById('generator'),status=document.getElementById('status'),button=document.getElementById('test');
+let waiting=false,timeout;
+window.addEventListener('message',e=>{
+  if(!waiting || e.source!==frame.contentWindow || !e.data || e.data.type!=='PONG')return;
+  if(e.origin!=='https://perchance.org' && e.origin!=='https://null.perchance.org')return;
+  clearTimeout(timeout);waiting=false;button.disabled=false;status.textContent='✅ نجح الاتصال! وصل رد PONG من Perchance (المصدر: '+e.origin+').';
+});
+button.onclick=()=>{
+  if(waiting)return;
+  waiting=true;button.disabled=true;status.textContent='⏳ أرسلنا PING وننتظر الرد…';
+  try {frame.contentWindow.postMessage({type:'PING'},'https://perchance.org');}
+  catch(e){waiting=false;button.disabled=false;status.textContent='❌ تعذر إرسال الرسالة: '+e.message;return;}
+  timeout=setTimeout(()=>{if(waiting){waiting=false;button.disabled=false;status.textContent='❌ لم يصل PONG خلال 15 ثانية. قد يكون التضمين محجوبًا أو الرسالة لا تصل إلى صفحة المولّد.';}},15000);
+};
+</script></body></html>
