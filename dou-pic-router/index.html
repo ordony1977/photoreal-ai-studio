@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909"><meta name="description" content="Dou-Pic-Router — AI image studio">
+<title>Dou-Pic-Router | AI Image Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#090909;--panel:#141414;--panel2:#1b1a17;--line:#393326;--gold:#d7b56d;--gold2:#f0d99c;--text:#f5f1e8;--muted:#a9a397;--danger:#f28b82}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -15%,#4b391b55,transparent 38%),var(--bg);color:var(--text);font:15px/1.6 system-ui,Tahoma,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{max-width:1180px;margin:auto;padding:0 22px}
+header{height:78px;border-bottom:1px solid #ffffff16;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}.mark{width:40px;height:40px;border:1px solid var(--gold);border-radius:13px;display:grid;place-items:center;color:var(--gold);font-size:22px;box-shadow:0 0 28px #d7b56d22}
+.brand small{display:block;color:var(--muted);font-size:10px;font-weight:500;letter-spacing:2px}
+.head-actions{display:flex;gap:10px;align-items:center}.ghost,.lang{border:1px solid var(--line);background:#171613;color:var(--text);border-radius:11px;padding:9px 13px}.lang{color:var(--gold2)}
+.hero{padding:48px 0 28px}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:2px;font-weight:700}.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.2;margin:10px 0}.hero p{color:var(--muted);max-width:650px;margin:10px 0}
+.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:20px;padding-bottom:45px}
+.panel{background:linear-gradient(145deg,#191816,#111);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 60px #0005}
+.panel h2{font-size:18px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 18px}
+.mode{display:flex;gap:8px;background:#0c0c0b;border:1px solid #302b20;border-radius:13px;padding:5px;margin-bottom:20px}
+.mode button{flex:1;border:0;border-radius:9px;background:transparent;color:var(--muted);padding:10px}.mode button.active{background:linear-gradient(110deg,#b48a3f,#ecd49a);color:#17130b;font-weight:800}
+label{display:block;font-size:13px;color:#ded6c5;font-weight:650;margin:15px 0 7px}
+textarea,input,select{width:100%;background:#0d0d0c;border:1px solid #3b3529;border-radius:11px;color:var(--text);padding:12px;outline:none}
+textarea{min-height:125px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px #d7b56d18}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hint{font-size:11px;color:var(--muted);margin-top:6px}
+.upload{border:1px dashed #71603d;border-radius:13px;padding:16px;text-align:center;color:var(--muted);background:#0c0c0b}
+.primary{width:100%;margin-top:20px;border:0;border-radius:12px;padding:14px;background:linear-gradient(110deg,#b48a3f,#ecd49a);color:#17130b;font-weight:850;font-size:15px}
+.primary:disabled{opacity:.5;cursor:wait}.notice{margin-top:14px;color:var(--muted);font-size:12px;min-height:24px;white-space:pre-wrap}.notice.error{color:var(--danger)}
+.status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:#9b865b}
+.preview{min-height:450px;display:flex;flex-direction:column}.preview-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.canvas{flex:1;min-height:360px;border:1px dashed #4b412e;border-radius:15px;background:radial-gradient(circle at center,#29231666,transparent 60%),#0c0c0b;display:grid;place-items:center;overflow:hidden;padding:16px}
+.empty{text-align:center;color:var(--muted)}.empty .spark{font-size:42px;color:var(--gold);display:block;margin-bottom:10px}
+.result{max-width:100%;max-height:560px;object-fit:contain;border-radius:10px}.download{display:none;margin-top:14px;text-align:center;text-decoration:none;border:1px solid var(--gold);color:var(--gold2);padding:10px;border-radius:10px}
+.provider{border:1px solid #342e22;background:#100f0d;border-radius:12px;padding:12px;margin-top:12px}.provider strong{font-size:13px}.provider p{margin:4px 0 0;color:var(--muted);font-size:11px}
+footer{border-top:1px solid #ffffff15;padding:20px 0 30px;color:var(--muted);font-size:11px;text-align:center}
+[dir=ltr] .brand small{letter-spacing:1.5px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.hero{padding-top:34px}.preview{min-height:390px}.canvas{min-height:300px}header{height:68px}.shell{padding:0 14px}}
+</style></head>
+<body><div class="shell">
+<header><div class="brand"><div class="mark">✦</div><div>DOU PIC ROUTER<small>AI IMAGE STUDIO</small></div></div><div class="head-actions"><button class="lang" id="lang">EN</button><button class="ghost" id="providerStatus">● <span data-i="checking">يفحص المزودين</span></button></div></header>
+<section class="hero"><div class="eyebrow" data-i="eyebrow">استوديو الصور الذكي</div><h1 data-i="headline">حوّل أفكارك إلى صور استثنائية.</h1><p data-i="intro">مساحة إبداعية واحدة لتوليد الصور وتعديلها، مع توجيه ذكي بين مزوّدي الذكاء الاصطناعي.</p></section>
+<main class="layout">
+<section class="panel"><h2 data-i="workspace">مساحة العمل</h2><p class="sub" data-i="workspaceSub">اكتب وصفك، اختر طريقة التوجيه، وابدأ الإبداع.</p>
+<div class="mode"><button class="active" id="generateMode" data-i="generate">توليد صورة</button><button id="editMode" data-i="edit">تعديل صورة</button></div>
+<label for="prompt" data-i="promptLabel">وصف الصورة</label><textarea id="prompt" maxlength="4000" data-ph="promptPh" placeholder="صف الصورة التي تتخيلها بالتفصيل..."></textarea>
+<div id="uploadWrap" hidden><label for="imageUpload" data-i="uploadLabel">الصورة الأصلية</label><div class="upload"><input id="imageUpload" type="file" accept="image/*"><div class="hint" data-i="uploadHint">ميزة تعديل الصور ستُفعّل عند توصيل مزوّد يدعم image editing.</div></div></div>
+<div class="row"><div><label for="provider" data-i="providerLabel">مزود الخدمة</label><select id="provider"><option value="auto">تلقائي — الأفضل المتاح</option></select></div><div><label for="size" data-i="sizeLabel">أبعاد الصورة</label><select id="size"><option value="1024x1024">مربع 1:1</option><option value="1024x1536">عمودي 2:3</option><option value="1536x1024">أفقي 3:2</option></select></div></div>
+<div class="provider"><strong data-i="routingTitle">التوجيه الذكي</strong><p data-i="routingDesc">يختار الوضع التلقائي مزوداً مهيأً فقط. لا يتم افتراض أن أي خدمة مجانية دون التحقق من شروطها الرسمية.</p></div>
+<button class="primary" id="run"><span data-i="run">✦ ابدأ التوليد</span></button><div class="notice" id="notice" role="status" aria-live="polite"></div>
+</section>
+<section class="panel preview"><div class="preview-top"><div><h2 data-i="resultTitle">منطقة المعاينة</h2><p class="sub" data-i="resultSub">ستظهر النتيجة هنا بعد اكتمال التوليد.</p></div><span class="status"><i class="dot"></i><span data-i="ready">جاهز</span></span></div>
+<div class="canvas" id="canvas"><div class="empty"><span class="spark">✧</span><strong data-i="emptyTitle">مساحتك الإبداعية بانتظارك</strong><p data-i="emptyDesc">ابدأ بوصف الصورة التي تريد إنشاءها.</p></div></div><a class="download" id="download" download="dou-pic-result.png" data-i="download">تنزيل الصورة</a></section>
+</main><footer>DOU-PIC-ROUTER · <span data-i="footer">مفاتيح API تحفظ على الخادم ولا تظهر في المتصفح.</span></footer></div>
+<script>
+const dict={
+ar:{checking:"يفحص المزودين",eyebrow:"استوديو الصور الذكي",headline:"حوّل أفكارك إلى صور استثنائية.",intro:"مساحة إبداعية واحدة لتوليد الصور وتعديلها، مع توجيه ذكي بين مزوّدي الذكاء الاصطناعي.",workspace:"مساحة العمل",workspaceSub:"اكتب وصفك، اختر طريقة التوجيه، وابدأ الإبداع.",generate:"توليد صورة",edit:"تعديل صورة",promptLabel:"وصف الصورة",promptPh:"صف الصورة التي تتخيلها بالتفصيل...",uploadLabel:"الصورة الأصلية",uploadHint:"ميزة تعديل الصور ستُفعّل عند توصيل مزوّد يدعم image editing.",providerLabel:"مزود الخدمة",sizeLabel:"أبعاد الصورة",routingTitle:"التوجيه الذكي",routingDesc:"يختار الوضع التلقائي مزوداً مهيأً فقط. لا يتم افتراض أن أي خدمة مجانية دون التحقق من شروطها الرسمية.",run:"✦ ابدأ التوليد",resultTitle:"منطقة المعاينة",resultSub:"ستظهر النتيجة هنا بعد اكتمال التوليد.",ready:"جاهز",emptyTitle:"مساحتك الإبداعية بانتظارك",emptyDesc:"ابدأ بوصف الصورة التي تريد إنشاءها.",download:"تنزيل الصورة",footer:"مفاتيح API تحفظ على الخادم ولا تظهر في المتصفح.",auto:"تلقائي — الأفضل المتاح",noProvider:"لا يوجد مزود مهيأ بعد",providerReady:"مزود مهيأ",working:"جارٍ التوليد…",enterPrompt:"اكتب وصف الصورة أولاً.",noImage:"لم يُرجع المزود صورة قابلة للعرض.",failed:"تعذر إكمال التوليد."},
+en:{checking:"Checking providers",eyebrow:"AI IMAGE STUDIO",headline:"Turn your ideas into extraordinary images.",intro:"One creative workspace for image generation and editing, with intelligent routing across AI providers.",workspace:"Workspace",workspaceSub:"Describe your idea, choose routing, and create.",generate:"Generate",edit:"Edit image",promptLabel:"Image prompt",promptPh:"Describe the image you imagine in detail...",uploadLabel:"Source image",uploadHint:"Image editing will activate when an image-editing provider is connected.",providerLabel:"Provider",sizeLabel:"Image size",routingTitle:"Smart routing",routingDesc:"Automatic mode selects only configured providers. No service is assumed to be free without checking its official terms.",run:"✦ Generate image",resultTitle:"Preview",resultSub:"Your result will appear here when generation is complete.",ready:"Ready",emptyTitle:"Your creative canvas awaits",emptyDesc:"Start by describing the image you want to create.",download:"Download image",footer:"API keys stay on the server and are never exposed in the browser.",auto:"Automatic — best available",noProvider:"No provider configured yet",providerReady:"Provider configured",working:"Generating…",enterPrompt:"Enter an image prompt first.",noImage:"The provider returned no displayable image.",failed:"Generation could not be completed."}};
+let lang="ar",mode="generate",providers=[];
+const $=id=>document.getElementById(id), t=k=>dict[lang][k]||k;
+function setLang(next){lang=next;document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";$("lang").textContent=lang==="ar"?"EN":"عربي";document.querySelectorAll("[data-i]").forEach(el=>el.textContent=t(el.dataset.i));document.querySelectorAll("[data-ph]").forEach(el=>el.placeholder=t(el.dataset.ph));}
+$("lang").onclick=()=>setLang(lang==="ar"?"en":"ar");
+function setMode(m){mode=m;$("generateMode").classList.toggle("active",m==="generate");$("editMode").classList.toggle("active",m==="edit");$("uploadWrap").hidden=m!=="edit";}
+$("generateMode").onclick=()=>setMode("generate");$("editMode").onclick=()=>setMode("edit");
+async function loadProviders(){try{const r=await fetch("/api/providers");const data=await r.json();providers=data.providers||[];const s=$("provider");s.innerHTML="";const auto=document.createElement("option");auto.value="auto";auto.textContent=t("auto");s.append(auto);providers.forEach(p=>{const o=document.createElement("option");o.value=p.id;o.textContent=p.name;s.append(o)});$("providerStatus").innerHTML="● "+(providers.length?t("providerReady"):t("noProvider"));}catch{$("providerStatus").textContent=t("noProvider")}}
+$("run").onclick=async()=>{const prompt=$("prompt").value.trim();if(!prompt){$("notice").textContent=t("enterPrompt");$("notice").className="notice error";return}
+if(mode==="edit"){$("notice").textContent=t("uploadHint");$("notice").className="notice";return}
+$("run").disabled=true;$("run").textContent=t("working");$("notice").textContent="";$("notice").className="notice";
+try{const r=await fetch("/api/generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt,provider:$("provider").value,size:$("size").value})});const data=await r.json();if(!r.ok)throw new Error(data.error||t("failed"));let src=data.image?.url|| (data.image?.base64?"data:image/png;base64,"+data.image.base64:null);if(!src)throw new Error(t("noImage"));const img=document.createElement("img");img.className="result";img.src=src;img.alt="Generated image";$("canvas").replaceChildren(img);$("download").href=src;$("download").style.display="block";$("notice").textContent=data.provider||"";}catch(e){$("notice").textContent=e.message||t("failed");$("notice").className="notice error"}finally{$("run").disabled=false;$("run").textContent=t("run")}};
+setLang("ar");loadProviders();
+</script></body></html>
